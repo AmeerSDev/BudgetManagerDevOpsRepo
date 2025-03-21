@@ -1,15 +1,31 @@
-def add_income(budget_data_structure, amount_to_add, description=""):
-    """Adds income to the balance and records the transaction."""
-    pass
+def add_income(budget_data_structure):
+    amount=int(input(f"Please enter amount : "))
+    description=input(f"Please enter description : ")
+    budget_data_structure["transactions"].append({"type":"income","amount":amount,"description":description})
+    budget_data_structure["balance"]+=amount
+    show_balance(budget_data_structure)
+    return budget_data_structure
 
-def add_expense(budget_data_structure, amount_to_subtract, description=""):
-    """Subtracts expense from the balance and records the transaction."""
-    pass
+def add_expense(budget_data_structure):
+    amount=int(input(f"Please enter amount : "))
+    description=input(f"Please enter description : ")
+    budget_data_structure["transactions"].append({"type":"expense","amount":amount,"description":description})
+    budget_data_structure["balance"]+=amount
+    return budget_data_structure
 
 def show_balance(budget_data_structure):
-    """Displays the current balance."""
-    pass
+    print(budget_data_structure["balance"])
+    return 
 
 def show_transactions(budget_data_structure):
-    """Displays all the transactions."""
-    pass
+    for tr in budget_data_structure["transactions"] :
+            print (tr)
+    return
+
+budget_data_structure = {
+    "balance": 500,
+    "transactions": [
+        {"type": "income", "amount": 1000, "description": "Salary"},
+        {"type": "expense", "amount": 500, "description": "Groceries"}
+    ]
+}
